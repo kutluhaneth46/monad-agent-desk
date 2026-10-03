@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0a0a0f;
-  --bg-2: #12121a;
-  --panel: #171722;
-  --ink: #f2f0ff;
-  --muted: #9a96b0;
-  --line: #2a2840;
-  --accent: #ff6b4a;
-  --accent-2: #7cf0c3;
+  --bg: #0a0a12;
+  --bg-2: #10101c;
+  --panel: #16162a;
+  --ink: #f0eeff;
+  --muted: #9a96b8;
+  --line: #2a2848;
+  --accent: #a78bfa;
+  --accent-2: #5eead4;
   --danger: #ff7a7a;
   --ok: #6ee7b7;
+  --btn-ink: #0a0814;
+  --header-bg: rgba(10, 10, 18, 0.9);
+  --grid: rgba(255, 255, 255, 0.03);
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --sans: "Sora", system-ui, sans-serif;
   --display: "Syne", var(--sans);
@@ -25,9 +28,9 @@ body {
   margin: 0;
   min-height: 100%;
   background:
-    radial-gradient(1100px 560px at 12% -10%, rgba(255, 107, 74, 0.16), transparent 55%),
-    radial-gradient(900px 480px at 100% 0%, rgba(124, 240, 195, 0.1), transparent 52%),
-    linear-gradient(180deg, #101018 0%, var(--bg) 42%, #07070c 100%);
+    radial-gradient(1100px 560px at 10% -8%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 55%),
+    radial-gradient(900px 480px at 100% 0%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 52%),
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 42%, #06060c 100%);
   color: var(--ink);
   font-family: var(--sans);
 }
@@ -38,8 +41,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 80%);
   z-index: 0;
@@ -50,5 +53,31 @@ a {
 }
 
 ::selection {
-  background: rgba(255, 107, 74, 0.3);
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--btn-ink);
+}
+
+.btn-secondary {
+  background: color-mix(in srgb, var(--accent-2) 88%, #0a1420);
+  color: var(--btn-ink);
+}
+
+a.btn-primary,
+a.btn-secondary {
+  text-decoration: none;
 }

@@ -1,18 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { EdgeFlag, HashedEvidence } from "@/lib/evidence";
 
-export type EvidenceRow = {
-  ok: boolean;
-  mode: string;
-  endpoint: string;
-  url: string;
-  params: Record<string, unknown>;
-  status: number;
-  data: unknown;
-  error?: string;
-  fetchedAt: string;
-};
+export type EvidenceRow = HashedEvidence;
 
 export function EvidencePanel({
   evidence,
@@ -35,6 +26,11 @@ export function EvidencePanel({
         2,
       ),
     [evidence, tool],
+  );
+
+  const allFlags = useMemo(
+    () => evidence.flatMap((ev) => ev.flags || []),
+    [evidence],
   );
 
   async function copyPack() {
@@ -62,12 +58,46 @@ export function EvidencePanel({
         <button
           type="button"
           onClick={() => void copyPack()}
-          className="rounded-lg border px-3 py-1.5 font-[family-name:var(--mono)] text-[11px] uppercase tracking-wide"
-          style={{ borderColor: "var(--line)", color: "var(--accent-2)" }}
+          className="btn-secondary rounded-lg px-3 py-1.5 font-[family-name:var(--mono)] text-[11px] uppercase tracking-wide"
         >
           {copied ? "Copied" : "Copy evidence pack"}
         </button>
       </div>
+
+      {allFlags.length > 0 ? (
+        <ul className="mb-4 flex flex-col gap-2">
+          {allFlags.map((flag: EdgeFlag, i) => (
+            <li
+              key={`${flag.code}-${i}`}
+              className="rounded-lg border px-3 py-2 text-xs leading-relaxed"
+              style={{
+                borderColor:
+                  flag.level === "error"
+                    ? "color-mix(in srgb, var(--danger) 55%, var(--line))"
+                    : "var(--line)",
+                background: "var(--panel)",
+              }}
+            >
+              <span
+                className="font-[family-name:var(--mono)] uppercase tracking-wider"
+                style={{
+                  color:
+                    flag.level === "error"
+                      ? "var(--danger)"
+                      : flag.level === "warn"
+                        ? "var(--accent)"
+                        : "var(--muted)",
+                }}
+              >
+                {flag.level} · {flag.code}
+              </span>
+              <span className="mt-0.5 block" style={{ color: "var(--muted)" }}>
+                {flag.message}
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
       <div className="mb-4 flex flex-col gap-2">
         {evidence.map((ev, i) => (
@@ -93,6 +123,14 @@ export function EvidencePanel({
             </span>
             <span className="font-[family-name:var(--mono)]">{ev.endpoint}</span>
             <span style={{ color: "var(--muted)" }}>HTTP {ev.status}</span>
+            {ev.evidenceHash ? (
+              <span
+                className="font-[family-name:var(--mono)] break-all"
+                style={{ color: "var(--accent-2)" }}
+              >
+                hash {ev.evidenceHash.slice(0, 20)}…
+              </span>
+            ) : null}
             <span style={{ color: "var(--muted)" }}>{ev.fetchedAt}</span>
             {ev.error ? (
               <span className="w-full break-all" style={{ color: "var(--danger)" }}>
@@ -105,7 +143,7 @@ export function EvidencePanel({
 
       <pre
         className="max-h-[420px] overflow-auto rounded-xl border p-4 font-[family-name:var(--mono)] text-[11px] leading-relaxed md:text-xs"
-        style={{ background: "#08080e", borderColor: "var(--line)", color: "#d8d4ef" }}
+        style={{ background: "var(--bg)", borderColor: "var(--line)", color: "var(--ink)" }}
       >
         {pack.slice(0, 12000)}
       </pre>

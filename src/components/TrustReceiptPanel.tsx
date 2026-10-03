@@ -87,7 +87,8 @@ export function TrustReceiptPanel() {
 
   return (
     <section
-      className="rounded-2xl border p-5 md:p-6 animate-[rise_1000ms_ease-out]"
+      id="trust"
+      className="scroll-mt-24 rounded-2xl border p-5 md:p-6 animate-[rise_1000ms_ease-out]"
       style={{ background: "var(--panel)", borderColor: "var(--line)" }}
     >
       <h2 className="text-xl font-semibold" style={{ fontFamily: "var(--display)" }}>

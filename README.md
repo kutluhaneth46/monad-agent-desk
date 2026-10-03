@@ -6,6 +6,8 @@ Track: **Trust, Identity & AI Infrastructure**
 
 Open TypeScript agent tooling on Monad: MCP style tool discovery, testnet RPC tools, agent trust brief, SHA-256 trust receipts, and copyable call evidence.
 
+**Jury path:** open the site, click **Run jury demo (60s)** — the desk runs `network_briefing`, scrolls to **Evidence & receipt**, and shows a sealed proof pack you can copy and verify locally in the browser.
+
 ## Run
 
 ```bash

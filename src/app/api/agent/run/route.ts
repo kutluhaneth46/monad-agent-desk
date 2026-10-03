@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sealRun } from "@/lib/evidence";
 import {
   AGENT_TOOLS,
   routeIntent,
@@ -31,10 +32,18 @@ export async function POST(req: Request) {
     }
 
     const result = await runTool(tool, args);
+    const receipt = await sealRun({
+      tool: result.tool,
+      summary: result.summary,
+      evidence: result.evidence,
+    });
+
     return NextResponse.json({
       ok: true,
       prompt: body.prompt || null,
       ...result,
+      evidence: receipt.calls,
+      receipt,
     });
   } catch (e) {
     return NextResponse.json(
