@@ -146,7 +146,7 @@ export default function Home() {
         <section className="animate-[rise_700ms_ease-out]">
           <div className="mb-5 flex items-center gap-4">
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt=""
               width={72}
               height={72}
@@ -158,10 +158,10 @@ export default function Home() {
                 className="font-[family-name:var(--mono)] text-xs tracking-[0.2em] uppercase"
                 style={{ color: "var(--accent)" }}
               >
-                Metropolis · Trust, Identity &amp; AI Infrastructure
+                Metropolis Trust, Identity and AI Infrastructure
               </p>
               <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>
-                Monad testnet JSON-RPC · sealed run receipts
+                Monad testnet JSON RPC and sealed run receipts
               </p>
             </div>
           </div>
@@ -176,8 +176,8 @@ export default function Home() {
             className="mt-4 max-w-2xl text-base leading-relaxed md:text-lg"
             style={{ color: "var(--muted)" }}
           >
-            Run agent tools on Monad testnet, get human-readable summaries, and
-            export SHA-256 proof packs judges can verify in the browser.
+            Run agent tools on Monad testnet, get plain language summaries, and
+            export SHA256 proof packs judges can verify in the browser.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <button
@@ -186,7 +186,7 @@ export default function Home() {
               disabled={loading}
               className="btn-primary rounded-xl px-5 py-3 text-sm font-semibold transition hover:brightness-110 disabled:opacity-60"
             >
-              {loading ? "Running…" : "Run jury demo (60s)"}
+              {loading ? "Running..." : "Run jury demo (60s)"}
             </button>
             <a
               href={GITHUB}
@@ -207,7 +207,7 @@ export default function Home() {
             {[
               {
                 t: "What",
-                b: "Desk runs MCP-style tools against Monad testnet RPC (or labeled mocks).",
+                b: "Desk runs MCP style tools against Monad testnet RPC, or labeled mocks.",
               },
               {
                 t: "Proof",
@@ -215,7 +215,7 @@ export default function Home() {
               },
               {
                 t: "Hash",
-                b: "Receipt hash binds the run; verify locally to catch panel tampering.",
+                b: "Receipt hash binds the run. Verify locally to catch panel tampering.",
               },
             ].map((item) => (
               <li key={item.t} className="min-w-0">
@@ -276,7 +276,7 @@ export default function Home() {
           ) : null}
 
           {loading ? (
-            <p style={{ color: "var(--muted)" }}>Calling Monad RPC…</p>
+            <p style={{ color: "var(--muted)" }}>Calling Monad RPC...</p>
           ) : null}
 
           {result?.summary ? (
@@ -353,7 +353,7 @@ export default function Home() {
               ) : null}
               {verifyState === "fail" ? (
                 <p className="mt-2 text-xs font-semibold" style={{ color: "var(--danger)" }}>
-                  Verification failed — receipt or evidence was altered.
+                  Verification failed. Receipt or evidence was altered.
                 </p>
               ) : null}
             </div>
@@ -392,7 +392,7 @@ export default function Home() {
                               : "var(--muted)",
                       }}
                     >
-                      {flag.level} · {flag.code}
+                      {flag.level}: {flag.code}
                     </span>
                     <span className="mt-0.5 block" style={{ color: "var(--muted)" }}>
                       {flag.message}
@@ -433,9 +433,9 @@ export default function Home() {
                   className="mt-2 font-[family-name:var(--mono)] text-[11px]"
                   style={{ color: "var(--muted)" }}
                 >
-                  {ev.ok ? "OK" : "ERR"} · {ev.mode} · HTTP {ev.status} · {ev.endpoint} ·
-                  hash {ev.evidenceHash.slice(0, 16)}… · {ev.fetchedAt}
-                  {ev.error ? ` · ${ev.error}` : ""}
+                  {ev.ok ? "OK" : "ERR"} / {ev.mode} / HTTP {ev.status} / {ev.endpoint} /
+                  hash {ev.evidenceHash.slice(0, 16)}... / {ev.fetchedAt}
+                  {ev.error ? ` / ${ev.error}` : ""}
                 </p>
               ))}
             </div>
@@ -493,7 +493,7 @@ export default function Home() {
                   disabled={loading}
                   className="btn-primary rounded-xl px-5 py-3 text-sm font-semibold transition hover:brightness-110 disabled:opacity-60"
                 >
-                  {loading ? "Running…" : "Run agent"}
+                  {loading ? "Running..." : "Run agent"}
                 </button>
                 <a
                   href="/api/tools"
@@ -550,22 +550,22 @@ export default function Home() {
             >
               <li>
                 <span style={{ color: "var(--ink)" }} className="font-medium">
-                  Evidence-first runs —
+                  Evidence first runs.{" "}
                 </span>
-                every tool returns copyable RPC evidence with SHA-256 seals.
+                Every tool returns copyable RPC evidence with SHA256 seals.
               </li>
               <li>
                 <span style={{ color: "var(--ink)" }} className="font-medium">
-                  Agent trust receipts —
+                  Agent trust receipts.{" "}
                 </span>
-                bind claims to chain tip data on Monad testnet.
+                Bind claims to chain tip data on Monad testnet.
               </li>
             </ul>
             <p
               className="mt-6 rounded-xl border p-3 text-xs leading-relaxed"
               style={{ borderColor: "var(--line)", color: "var(--accent)" }}
             >
-              Default RPC: testnet-rpc.monad.xyz · set MONAD_RPC_URL to override
+              Default RPC: testnet-rpc.monad.xyz. Set MONAD_RPC_URL to override.
             </p>
           </aside>
         </section>
@@ -594,9 +594,9 @@ export default function Home() {
             style={{ color: "var(--muted)" }}
           >
             <p>
-              Monad Agent Desk is a public demo for the Metropolis track: agents
-              discover tools via <code className="text-xs">/api/tools</code>, execute
-              against Monad testnet JSON-RPC, and return sealed proof packs plus
+              Monad Agent Desk is a public demo for the Metropolis track. Agents
+              discover tools via <code className="text-xs">/api/tools</code>, run
+              against Monad testnet JSON RPC, and return sealed proof packs plus
               optional agent trust receipts.
             </p>
             <p>
@@ -605,7 +605,7 @@ export default function Home() {
               the UI alone.
             </p>
             <p>
-              Built by KutluhanETH · open source on GitHub · deployable to Vercel
+              Built by KutluhanETH. Open source on GitHub. Deployable to Vercel
               with env overrides for RPC and mock mode.
             </p>
           </div>
@@ -616,8 +616,8 @@ export default function Home() {
           style={{ borderColor: "var(--line)", color: "var(--muted)" }}
         >
           <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt="" width={28} height={28} className="rounded-lg" />
-            <span>Monad Agent Desk · Metropolis 2026</span>
+            <Image src="/logo.svg" alt="" width={28} height={28} className="rounded-lg" />
+            <span>Monad Agent Desk. Metropolis 2026.</span>
           </div>
           <a href={GITHUB} target="_blank" rel="noreferrer">
             Source
@@ -689,11 +689,11 @@ function PayloadView({ payload }: { payload: unknown }) {
             </dt>
             <dd className="mt-1 text-sm break-all" style={{ color: "var(--ink)" }}>
               {Array.isArray(v)
-                ? v.join(" · ")
+                ? v.join(", ")
                 : v && typeof v === "object"
                   ? Object.entries(v as Record<string, unknown>)
                       .map(([ik, iv]) => `${ik}: ${String(iv)}`)
-                      .join(" · ")
+                      .join(", ")
                   : String(v)}
             </dd>
           </div>

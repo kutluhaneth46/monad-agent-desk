@@ -13,7 +13,7 @@ export function SiteHeader() {
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-3 md:px-8">
         <a href="#top" className="flex items-center gap-3 no-underline">
           <Image
-            src="/logo.png"
+            src="/logo.svg"
             alt="Monad Agent Desk logo"
             width={40}
             height={40}
@@ -31,7 +31,7 @@ export function SiteHeader() {
               className="hidden font-[family-name:var(--mono)] text-[10px] tracking-[0.16em] uppercase sm:block"
               style={{ color: "var(--muted)" }}
             >
-              Metropolis · Trust &amp; AI
+              Metropolis Trust and AI
             </p>
           </div>
         </a>

@@ -52,8 +52,7 @@ export function EvidencePanel({
           className="font-[family-name:var(--mono)] text-xs tracking-wider uppercase"
           style={{ color: "var(--muted)" }}
         >
-          RPC call evidence · {evidence.length} call
-          {evidence.length === 1 ? "" : "s"}
+          RPC call evidence ({evidence.length})
         </h3>
         <button
           type="button"
@@ -89,7 +88,7 @@ export function EvidencePanel({
                         : "var(--muted)",
                 }}
               >
-                {flag.level} · {flag.code}
+                {flag.level}: {flag.code}
               </span>
               <span className="mt-0.5 block" style={{ color: "var(--muted)" }}>
                 {flag.message}

@@ -95,7 +95,7 @@ export function TrustReceiptPanel() {
         Agent trust receipt
       </h2>
       <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-        Bind an agent id to live Monad chain tip evidence and issue a SHA-256
+        Bind an agent id to live Monad chain tip evidence and issue a SHA256
         fingerprint judges or agents can recompute.
       </p>
 
